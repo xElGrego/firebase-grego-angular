@@ -1,14 +1,17 @@
-<div class="container">
-  <nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand">Grego - Practica Firebase + Angular</a>
+
+<div class="container" >
+  
+  <nav class="navbar navbar-dark bg-dark" >
+    <div class="centrar">
+      <h3 class="centrado">Grego Firebase + Angular CRUD</h3>
     </div>
   </nav>
 </div>
 <br>
 <br>
 
-<div class="container">
+<div class="container" style="text-align: center;">
+  <h2> Sistema de estudiantes </h2>
   <!-- El elemento thead contiene a un bloque de filas
   (tr) representa a la sección de encabezado de una tabla (table), 
   donde las celdas de encabezado (th) son encontradas habitualemnte. -->
@@ -18,17 +21,25 @@
         <th>Id</th>
         <th>Nombre</th>
         <th>Apellido</th>
+        <th>Opciones</th>
       </tr>
     </thead>
 
     <!-- El elemento tbody contiene a un bloque de filas (tr) que representaa a la 
     sección del cuerpo de una tabla (table).  -->
     <tbody>
-      <tr *ngFor="let item of colections.data">
+      <tr *ngFor="let item of colections.data | paginate: config">
         <td> {{ item.id}} </td>
         <td> {{ item.nombre}} </td>
         <td> {{ item.apellido}} </td>
+        <td> 
+          <button type="button" class="btn btn-primary">Editar</button>
+          <button type="button" class="btn btn-danger">Eliminar</button>
+        </td>
       </tr>
     </tbody>
   </table>
+
+  <!-- Se crea un pagination-controls -->
+  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
 </div>

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
- /* Agregando la paginación  npm i ngx-pagination --save  */
+ /* Dependencia: Agregando la paginación => npm i ngx-pagination --save  */
 import {NgxPaginationModule} from 'ngx-pagination'
 
 @NgModule({
@@ -14,6 +14,7 @@ import {NgxPaginationModule} from 'ngx-pagination'
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxPaginationModule
     
   ],
   providers: [],
