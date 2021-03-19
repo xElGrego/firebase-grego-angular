@@ -12,21 +12,21 @@ export class FirebaseServicesService {
 
   //Método para obtener los estudiantes de la base de datos en Firebase  
   getEstudiantes(){
-    this.firestore.collection("estudiantes").snapshotChanges()
+    return this.firestore.collection("estudiantes").snapshotChanges();
   }
 
  //Método para crear estudiantes en la base de datos en Firebase  
   createEstudiante(estudiante:any){
-    this.firestore.collection("estudiante").add(estudiante);
+    return this.firestore.collection("estudiantes").add(estudiante);
   }
 
   //Método para actualizar estudiantes en la base de datos en Firebase  
   updateEstudiante(id:any , estudiante: any){
-    this.firestore.collection("estudiante").doc(id).update(estudiante);
+    return this.firestore.collection("estudiantes").doc(id).update(estudiante);
   }
 
   //Método para eliminar estudiantes en la base de datos en Firebase  
   deleteEstudiante(id:any){
-    this.firestore.collection("estudiante").doc(id).delete();
+    return this.firestore.collection("estudiantes").doc(id).delete();
   }
 }
