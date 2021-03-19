@@ -1,7 +1,6 @@
+<div class="container">
 
-<div class="container" >
-  
-  <nav class="navbar navbar-dark bg-dark" >
+  <nav class="navbar navbar-dark bg-dark">
     <div class="centrar">
       <h3 class="centrado">Grego Firebase + Angular CRUD</h3>
     </div>
@@ -10,7 +9,13 @@
 <br>
 <br>
 
+
+
 <div class="container" style="text-align: center;">
+  <button style="text-align: center;" type="button" class="btn btn-success" (click)="open(content)">Agregar estudiante
+  </button>
+  <br>
+  <br>
   <h2> Sistema de estudiantes </h2>
   <!-- El elemento thead contiene a un bloque de filas
   (tr) representa a la sección de encabezado de una tabla (table), 
@@ -32,9 +37,9 @@
         <td> {{ item.id}} </td>
         <td> {{ item.nombre}} </td>
         <td> {{ item.apellido}} </td>
-        <td> 
+        <td>
           <button type="button" class="btn btn-primary">Editar</button>
-          <button type="button" class="btn btn-danger">Eliminar</button>
+          <button type="button" class="btn btn-danger" (click)="delet(item)">Eliminar</button>
         </td>
       </tr>
     </tbody>
@@ -42,4 +47,47 @@
 
   <!-- Se crea un pagination-controls -->
   <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
+  <!-- Se crea el modal modal-->
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Estudiante created/update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <form [formGroup]="estudiantesForm" >
+            <div class="form-group">
+              <label>Id</label>
+              <input type="number" formControlName="id" class="form-control">
+
+            </div>
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text"  formControlName="nombre" class="form-control">
+
+            </div>
+
+            <div class="form-group">
+              <label>Apellido</label>
+              <input type="text" formControlName="apellido" class="form-control"> 
+            </div>
+          </form>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="save()">Guardar</button>
+    </div>
+  </ng-template>
+
+
+
+  <hr>
+
+
+
 </div>
